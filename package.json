@@ -24,6 +24,6 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "@lightningchart/lcjs": "^7.0.1"
+    "@lightningchart/lcjs": "^8.1.0"
   }
 }

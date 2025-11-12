@@ -1,17 +1,20 @@
-import { emptyFill, lightningChart } from "@lightningchart/lcjs";
+import { lightningChart } from "@lightningchart/lcjs";
 
 const lc = lightningChart({
   // Get your license key from https://lightningchart.com/js-charts/
-  //  license: 'my-license-key'
+  // license: ''
 });
 
 const chart = lc.ChartXY();
 
 chart.setTitle("Getting Started");
 
-const lineSeries = chart
-  .addPointLineAreaSeries({ dataPattern: "ProgressiveX" })
-  .setAreaFillStyle(emptyFill);
+const lineSeries = chart.addLineSeries({
+  schema: {
+    x: { pattern: "progressive" },
+    y: { pattern: null },
+  },
+});
 
 lineSeries.appendJSON([
   { x: 0, y: 0 },

@@ -14,6 +14,10 @@ const config = {
     static: path.join(__dirname, "dist"),
     compress: true,
     host: "localhost",
+    headers: {
+      "Cross-Origin-Opener-Policy": "same-origin",
+      "Cross-Origin-Embedder-Policy": "require-corp",
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -31,9 +35,18 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/i,
+        test: /\.ts$/i,
         loader: "ts-loader",
-        exclude: ["/node_modules/"],
+        exclude: /node_modules/,
+      },
+      {
+        test: /worker\.ts$/i,
+        use: [
+          {
+            loader: "ts-loader",
+            options: { transpileOnly: true },
+          },
+        ],
       },
     ],
   },
